@@ -1,0 +1,119 @@
+<div class="frame">
+
+    <div class="info-container-bg" *ngIf="showDetails" (click)='hideWeatherDetails()'>  
+        <div class="info-container">
+            <div class="info" *ngFor="let hour of weatherInfo" >
+                <div class="name my-2">
+                    <b>{{ hour.time.split(' ')[0] | date:'mediumDate'  }}.  
+                    {{ hour.time.split(' ')[1] | timeFormat }}</b>
+                </div>
+
+                
+                <div class="my-1 weather-data-grid">
+                    Min: <span><b>{{ hour.minTemp | number:'1.0-0'}}</b> °C</span>
+                </div>
+                <div class="my-1 weather-data-grid">
+                    Max: <span><b>{{ hour.maxTemp | number:'1.0-0'}}</b>  °C</span>
+                </div>
+                <div class="my-1 weather-data-grid">
+                    Real feel: <span><b>{{ hour.realFealTemp | number:'1.0-0'}}</b> °C</span>
+                </div>
+                <div class="my-1 weather-data-grid">
+                    Preassure: <span><b>{{ hour.pressure / 1000 }} </b>bar</span>
+                </div>
+                
+                <div class="my-1 weather-data-grid" *ngIf="hour.rainVol">
+                    Rainfall: <span><b>{{ hour.rainVol }} </b>mm</span>
+                </div>
+                <div class="my-1 weather-data-grid" *ngIf="hour.shnowVol">
+                    Shnowfall: <span><b>{{ hour.shnowVol }} </b>mm</span>
+                </div>
+                <div class="my-1 weather-data-grid">
+                    Visibility: <span><b> {{ hour.visibility / 1000 }} </b>km</span>
+                </div>
+                <div class="my-1 weather-data-grid">
+                    Wind direction: <span><b>{{ hour.windDirection | direction }} </b></span>
+                </div>
+                <div class="my-1 weather-data-grid">
+                    Wind peek: <span><b>{{ hour.windPeek | number:'1.0-0'}} </b>km/h</span>
+                </div>
+                <div class="my-1 weather-data-grid">
+                    Wind speed: <span><b>{{ hour.windSpeed | number:'1.0-0'}} </b>km/h</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="starting-message" *ngIf="!place.imageArray">
+        <div class="text">
+            <h1>Welcome to my Weather Forecast project</h1>
+            <p>Type a city name to start</p>
+        </div>
+    </div>
+
+    <div class="container" *ngIf="place.imageArray">
+        <div id="slider" >
+             <div class="item" 
+                    *ngFor="let weather of dailyWeather; let i = index"        
+                    [style.background-image]="'url(' + place.imageArray[i] + ')'">
+               <div class="info-header">    
+                    <div class="date">
+                            {{ weather[0].time.split(' ')[0] }}
+                    </div>
+                    <div class="daily-temp" *ngFor="let temp of weather"> 
+                            <div class="daily-temp-time">{{ temp.time.split(' ')[1] | timeFormat:true }}</div>
+                            <div>{{temp.temp | number:'1.0-0'}}°</div>
+                            <div class="daily-temp-pic">
+                                <img [src]="'https://openweathermap.org/img/wn/' + temp.weatherIcon + '@2x.png'" alt="weather icon">
+                            </div>
+                    </div>
+               </div>
+                <div class="content bg-filter" >
+                    <div class="description">   
+                        <img [src]="'https://openweathermap.org/img/wn/' + weather[0].weatherIcon + '@2x.png'" alt="weather icon"> 
+                        <p>{{ weather[0].weatherDesc }}</p> 
+                    </div>
+                    <div class="my-1 weather-data-grid">
+                        Cloudiness:  <span><b>{{ weather[0].cloudiness }}</b>%</span>
+                    </div>
+                    <div class="my-1 weather-data-grid">
+                        Humidity:  <span><b>{{ weather[0].humidity }}</b>%</span>
+                    </div>
+                    <div class="my-1 weather-data-grid">
+                        Chance of rain:  <span><b>{{ weather[0].probOfPrec * 100 | number:'1.0-0'}}</b>%</span>
+                    </div>
+
+                    <div class="btn-container">
+                        <button class="main-btn" 
+                        (click)="showWeatherDetails(i)"> 
+                            Details
+                        </button>
+                    </div>
+
+                    <div class="temp">
+                        <p>{{ weather[0].temp | number:'1.0-0'}}°</p>
+                    </div>
+
+                </div>
+
+                <div class="tumb">
+                    <div class="date">
+                        {{ weather[0].time.split(' ')[0] }}
+                    </div>
+                    <div class="temp">
+                        <p>{{ weather[0].temp | number:'1.0-0'}}°</p>
+                    </div>
+                    <div class="pic">   
+                        <img [src]="'https://openweathermap.org/img/wn/' + weather[0].weatherIcon + '@2x.png'" alt="weather icon">  
+                    </div>
+                    
+                </div>
+
+            </div> 
+    
+        </div>
+        <div class="buttons">
+            <button id="prev" (click)="prev()"><i class="fa-solid fa-angle-left"></i></button>
+            <button id="next" (click)="next()"><i class="fa-solid fa-angle-right"></i></button>
+        </div>
+</div>

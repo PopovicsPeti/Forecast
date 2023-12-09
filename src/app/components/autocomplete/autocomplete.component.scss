@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+    place-content: center;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1rem;
+
+    mat-form-field {
+        width: 30vw;
+    }
+}

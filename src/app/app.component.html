@@ -1,0 +1,73 @@
+<mat-toolbar color="primary" class="primary-header">
+  <div class="logo">
+    <img src="../assets/logo.png" alt="weather logo">
+  </div>
+  <div>
+    <p class="main-title">Weather forcast</p>
+    <p class="secondary-title">for the next 120 hour</p>
+  </div>
+</mat-toolbar>
+<div class="container">
+  <div class="row">
+    <div class="col-12 my-1 search-panel" >
+        <div class="search-input">
+          <app-autocomplete (placeChanged)="placeChangeHandler($event) " 
+                            (weatherDataArrayChanged)="weatherDataArray = $event">
+          </app-autocomplete>
+        </div>
+        <!-- <div class="btn-container">
+          <button class="main-btn" (click)="fetchSpecificWeather()"> weather</button>
+        </div> -->
+
+        <div class="city-name">
+          <div class="sun-info" *ngIf="fromPlaceValue.name">
+            <div>
+              <i class="fa-solid fa-location-dot fa-xl"></i>
+            </div>
+            <h2> {{ fromPlaceValue.name }}</h2>
+            <p> 
+              <i class="fa-solid fa-sun"></i> {{ sunInfo.sunrise }} 
+              <i class="fa-solid fa-moon"></i> {{ sunInfo.sunset }}
+            </p>
+          </div>
+        </div>
+      </div>   
+          
+      <div class="errors" 
+            *ngIf="locationMissmatch || errorMessage">
+        <div class="alert alert-danger alert-dismissible fade show"
+             *ngIf="locationMissmatch" 
+             role="alert">
+          <strong>Something Went wrong! </strong> {{ locationMissmatch }}
+          <button type="button" 
+                  (click)="locationMissmatch = ''"
+                  class="btn-close" 
+                  data-bs-dismiss="alert" 
+                  aria-label="Close">
+          </button>
+        </div>
+    
+        <div class="alert alert-danger alert-dismissible fade show"
+             *ngIf="errorMessage" 
+             role="alert">
+          <strong>Something Went wrong! </strong> {{ errorMessage }}
+          <button type="button" 
+                  (click)="errorMessage = ''"
+                  class="btn-close" 
+                  data-bs-dismiss="alert" 
+                  aria-label="Close">
+          </button>
+        </div>
+      </div>
+
+      <div class="row my-3">
+        <div class="col-12">
+          <app-slider  [sunInfoValue]="sunInfo" 
+                        [place]="fromPlaceValue"
+                        [weatherDataArrayValue]="weatherDataArray">
+          </app-slider>
+        </div>
+      </div>
+
+  </div>
+</div>

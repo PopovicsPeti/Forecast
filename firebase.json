@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/forecast",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

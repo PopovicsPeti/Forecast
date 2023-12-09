@@ -1,0 +1,28 @@
+/* -------------------------------------------------------------------------------------------------------- */
+/*      ---------------<! {{{{{{{{{{ Open Weather api json data for class }}}}}}}}}} !>---------------      */
+/* -------------------------------------------------------------------------------------------------------- */
+
+
+/*
+list.dt                     ->      Time of data forecasted, unix, UTC
+list.main.temp              ->      Temperature.  Celsius,
+list.main.feels_like        ->      This temperature parameter accounts for the human perception of weather.
+list.main.temp_min          ->      Minimum temperature at the moment of calculation. 
+list.main.temp_max          ->      Maximum temperature at the moment of calculation.
+list.main.grnd_level        ->      Atmospheric pressure on the ground level, hPa
+list.main.humidity          ->      Humidity, %
+list.weather.id             ->      Weather condition id
+list.weather.main           ->      Group of weather parameters (Rain, Snow, Clouds etc.)
+list.weather.description    ->      Weather condition within the group. 
+list.weather.icon           ->      Weather icon id
+list.clouds.all             ->      Cloudiness, %
+list.wind.speed             ->      Wind speed. Unit Default: meter/sec
+list.wind.deg               ->      Wind direction, degrees (meteorological)
+list.wind.gust              ->      Wind gust. Unit Default: meter/sec, 
+list.visibility             ->      Average visibility, metres. max  10km
+list.pop                    ->      Probability of precipitation. 0 = 0%, 1 = 100%
+list.rain.3h                ->      Rain volume for last 3 hours, mm.
+list.snow.3h                ->      Snow volume for last 3 hours. mm
+city.sunrise                ->      Sunrise time, Unix, UTC // -> let date = new Date(unix*1000);
+city.sunset                 ->      Sunset time, Unix, UTC  // -> let date = new Date(unix*1000);
+*/

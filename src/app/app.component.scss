@@ -1,0 +1,80 @@
+.primary-header {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+
+    .logo {
+        width: 3rem;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    p {
+        margin: 0;
+        padding: 0;
+    }
+
+    .main-title {
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin-bottom: -.5rem
+    }
+
+    .secondary-title {
+        font-size: .8rem;
+        font-weight: 400;
+        text-align: center;
+    }
+}
+
+.search-panel {
+    display: flex;
+    place-items: center;
+
+    .btn-container {
+        margin-left: 1rem;
+
+    
+        .main-btn {
+            background: rgb(147, 189, 236);
+            border: 1px solid rgb(12, 93, 185);
+            padding: .5rem 1.5rem;
+            border-radius: .5rem;
+        }
+    }
+
+    .city-name {
+        .sun-info {
+            display: flex;
+            margin-left: 2rem;
+            justify-content: center;
+
+            div {
+                padding-top: .5rem
+            }
+
+            h2 {
+                margin-left: .5rem;
+                display: block;
+            }
+    
+            p {
+                display: block;
+                margin: .5rem 0 0 1rem;
+            }
+        }
+    }
+
+}
+
+.errors {
+    position: fixed;
+    display: block;
+    top: 10vh;
+    left: 10vw;
+    width: 80vw;
+    height: 20vh;
+}
+
